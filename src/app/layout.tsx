@@ -43,14 +43,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://posse-studios.vercel.app'),
+  metadataBase: new URL('https://possestudios.io'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://posse-studios.vercel.app',
+    url: 'https://possestudios.io',
     title: 'Posse Studios - AI-Powered Creative Innovation',
     description: 'Cutting-edge creative studio pushing the boundaries of digital innovation. From AI-powered 3D generation with Skulpty to immersive gaming experiences with Want3d, and premium digital art marketplace Dreambay.',
     siteName: 'Posse Studios',

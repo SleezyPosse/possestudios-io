@@ -4,8 +4,8 @@ export function StructuredData() {
     "@type": "Organization",
     "name": "Posse Studios",
     "description": "Cutting-edge creative studio pushing the boundaries of digital innovation. From AI-powered 3D generation with Skulpty to immersive gaming experiences with Want3d, and premium digital art marketplace Dreambay.",
-    "url": "https://posse-studios.vercel.app",
-    "logo": "https://posse-studios.vercel.app/logo.png",
+    "url": "https://possestudios.io",
+    "logo": "https://possestudios.io/logo.png",
     "sameAs": [
       "https://twitter.com/posse_studios",
       "https://linkedin.com/company/posse-studios",

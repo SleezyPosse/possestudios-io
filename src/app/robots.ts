@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private/', '/admin/'],
     },
-    sitemap: 'https://posse-studios.vercel.app/sitemap.xml',
+    sitemap: 'https://possestudios.io/sitemap.xml',
   }
 }
