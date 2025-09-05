@@ -1,0 +1,84 @@
+.menuButton {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+}
+
+.menuIcon {
+  height: 40px;
+  width: 40px;
+  position: relative;
+  z-index: 11;
+  cursor: pointer;
+  display: block;
+}
+
+.menuIconLine {
+  height: 4px;
+  display: block;
+  background: #FFFFFF;
+  margin-bottom: 9px;
+  cursor: pointer;
+  transition: all 200ms linear;
+  position: absolute;
+}
+
+.menuIconLineLeft {
+  composes: menuIconLine;
+  width: 16.5px;
+  top: 0px;
+  left: 0px;
+}
+
+.menuIconLineLeft.open {
+  width: 15px;
+  transform: translate(2px, 4px) rotate(45deg);
+}
+
+.menuIconLineCenter {
+  composes: menuIconLine;
+  width: 40px;
+  top: 18px;
+  left: 0px;
+  transition: background-color 0.5s ease, transform 0.2s ease;
+}
+
+.menuIconLineCenter.open {
+  transform: rotate(-45deg);
+}
+
+.menuIconLineRight {
+  composes: menuIconLine;
+  width: 16.5px;
+  top: 36px;
+  right: 0px;
+  float: right;
+}
+
+.menuIconLineRight.open {
+  width: 15px;
+  transform: translate(-3px, -3.5px) rotate(45deg);
+}
+
+/* Hover effects for menu icon */
+.menuIcon:hover .menuIconLineLeft,
+.menuIcon:hover .menuIconLineRight,
+.menuIcon:hover .menuIconLineCenter {
+  width: 40px !important;
+  background-color: #fff !important;
+}
+
+.menuIconLineCenter {
+  transition: background-color 0.5s ease, transform 0.2s ease !important;
+}
+
+.menuIconLineLeft,
+.menuIconLineRight {
+  transition: all 200ms linear !important;
+}

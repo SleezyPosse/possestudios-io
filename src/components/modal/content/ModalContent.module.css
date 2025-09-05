@@ -1,0 +1,198 @@
+.modalContentWrapper {
+  color: white;
+  font-family: "Press Start 2P", "Bungee", sans-serif;
+}
+
+.modalTitle {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #7B3FE4;
+}
+
+.modalSubtitle {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #C084FC;
+}
+
+.modalText {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.modalText:last-child {
+  margin-bottom: 0;
+}
+
+/* Product styles */
+.productGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.productCard {
+  background: rgba(123, 63, 228, 0.2);
+  border: 2px solid #7B3FE4;
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.productCard:hover {
+  background: rgba(123, 63, 228, 0.4);
+  transform: scale(1.02);
+}
+
+.productName {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #7B3FE4;
+}
+
+.productSubtitle {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #C084FC;
+}
+
+.productDescription {
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  color: #7B3FE4;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+}
+
+.featureItem {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.featureBullet {
+  color: #7B3FE4;
+  position: absolute;
+  left: 0;
+}
+
+/* Partner styles */
+.partnersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.partnerCard {
+  background: rgba(123, 63, 228, 0.1);
+  border: 2px solid #7B3FE4;
+  border-radius: 20px;
+  padding: 25px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.partnerCard:hover {
+  background: rgba(123, 63, 228, 0.2);
+  transform: scale(1.02);
+  border-color: #C084FC;
+}
+
+.partnerLogo {
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.partnerLogo.aws {
+  filter: brightness(0) invert(1);
+}
+
+.partnerName {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #7B3FE4;
+  font-weight: bold;
+}
+
+.partnerDescription {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #C084FC;
+}
+
+.partnershipCTA {
+  background: rgba(123, 63, 228, 0.1);
+  border: 2px solid #7B3FE4;
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.ctaTitle {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #7B3FE4;
+}
+
+.ctaText {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #C084FC;
+}
+
+.ctaButton {
+  background: linear-gradient(135deg, #7B3FE4 0%, #C084FC 100%);
+  border: none;
+  border-radius: 15px;
+  padding: 15px 30px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(123, 63, 228, 0.3);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(123, 63, 228, 0.4);
+}
+
+/* Social links styles */
+.socialLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.socialLink {
+  color: #7B3FE4;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.socialLink:hover {
+  color: #C084FC;
+}

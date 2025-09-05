@@ -1,0 +1,29 @@
+.navInside {
+  position: relative;
+  z-index: 2;
+  color: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: "Press Start 2P", "Bungee", sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.navButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-family: "Press Start 2P", "Bungee", sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease;
+}
+
+.navButton:hover {
+  transform: scale(1.05);
+}
