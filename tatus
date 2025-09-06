@@ -1,0 +1,5 @@
+[33m03438bd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Fix: Move AWS.svg back to public directory and fix case sensitivity
+[33m041a025[m Organize unused files and exclude from git tracking
+[33m48d41f4[m Update domain to possestudios.io in all SEO metadata
+[33m9a39c54[m Add comprehensive SEO metadata and structured data
+[33m40b9fcb[m Initial commit: Next.js Posse app with video background and modal components
