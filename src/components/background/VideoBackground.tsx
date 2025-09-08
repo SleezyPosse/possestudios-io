@@ -1,47 +1,47 @@
 'use client';
 
 import { useRef, useEffect, useState, useCallback } from 'react';
-import { useAudioContext } from '@/components/providers/AudioProvider';
 import styles from './VideoBackground.module.css';
 
 export function VideoBackground() {
   const [currentVideo, setCurrentVideo] = useState('/PosseLanding.mp4');
   const [videoStage, setVideoStage] = useState<'landing' | 'loop'>('landing');
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const { isMuted, audioRef, setPosseLandingFinished } = useAudioContext();
+  const loopVideoRef = useRef<HTMLVideoElement>(null);
 
   const handleVideoEnd = useCallback(() => {
     if (videoStage === 'landing') {
-      setVideoStage('loop');
-      setCurrentVideo('/PosseLoop1.mp4');
-      // Mark that PosseLanding has finished
-      setPosseLandingFinished(true);
-      // When transitioning to loop stage, start MusicLoop.mp3 if not muted
-      if (!isMuted && audioRef.current) {
-        setTimeout(() => {
-          if (audioRef.current) {
-            audioRef.current.src = '/MusicLoop.mp3';
-            audioRef.current.loop = true;
-            audioRef.current.volume = 1;
-            audioRef.current.play().catch(console.error);
-          }
-        }, 100); // Small delay to ensure video has loaded
+      setIsTransitioning(true);
+      
+      // Start the loop video in the background
+      const loopVideo = loopVideoRef.current;
+      if (loopVideo) {
+        loopVideo.currentTime = 0;
+        loopVideo.play().catch(console.error);
       }
+      
+      // After a brief moment, switch to the loop video
+      setTimeout(() => {
+        setVideoStage('loop');
+        setCurrentVideo('/PosseLoop1.mp4');
+        setIsTransitioning(false);
+      }, 100); // Small delay for smooth transition
     }
-  }, [videoStage, isMuted, audioRef, setPosseLandingFinished]);
+  }, [videoStage]);
 
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
       video.loop = videoStage === 'loop';
-      // Video audio is controlled by music button for all stages
-      video.muted = isMuted;
+      // Keep video muted since we removed audio functionality
+      video.muted = true;
       video.addEventListener('ended', handleVideoEnd);
       return () => {
         video.removeEventListener('ended', handleVideoEnd);
       };
     }
-  }, [videoStage, isMuted, handleVideoEnd]);
+  }, [videoStage, handleVideoEnd]);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -52,23 +52,38 @@ export function VideoBackground() {
     }
   }, [currentVideo]);
 
-  // Separate useEffect for mute state to avoid restarting video
+  // Preload the loop video for smooth transition
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = isMuted;
+    const loopVideo = loopVideoRef.current;
+    if (loopVideo) {
+      loopVideo.preload = 'auto';
+      loopVideo.muted = true;
+      loopVideo.loop = true;
     }
-  }, [isMuted]);
+  }, []);
 
   return (
-    <video
-      ref={videoRef}
-      autoPlay
-      playsInline
-      className={styles.video}
-      onEnded={handleVideoEnd}
-    >
-      <source src={currentVideo} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+    <>
+      <video
+        ref={videoRef}
+        autoPlay
+        playsInline
+        className={styles.video}
+        onEnded={handleVideoEnd}
+      >
+        <source src={currentVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      
+      {/* Hidden loop video for smooth transition */}
+      <video
+        ref={loopVideoRef}
+        playsInline
+        className={`${styles.video} ${styles.hiddenVideo}`}
+        style={{ opacity: isTransitioning ? 1 : 0 }}
+      >
+        <source src="/PosseLoop1.mp4" type="video/mp4" />
+      </video>
+    </>
   );
 }
