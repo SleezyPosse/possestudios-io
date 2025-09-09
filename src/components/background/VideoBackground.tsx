@@ -19,14 +19,31 @@ export function VideoBackground() {
       if (loopVideo) {
         loopVideo.currentTime = 0;
         loopVideo.play().catch(console.error);
+        
+        // Wait for the loop video to be ready before switching
+        const handleCanPlay = () => {
+          console.log('Loop video is ready, switching...');
+          setVideoStage('loop');
+          setCurrentVideo('/PosseLoop1.mp4');
+          setIsTransitioning(false);
+          loopVideo.removeEventListener('canplay', handleCanPlay);
+        };
+        
+        // If already ready, switch immediately, otherwise wait
+        if (loopVideo.readyState >= 3) { // HAVE_FUTURE_DATA or higher
+          handleCanPlay();
+        } else {
+          loopVideo.addEventListener('canplay', handleCanPlay);
+          // Fallback timeout in case canplay doesn't fire
+          setTimeout(() => {
+            console.log('Fallback: switching after timeout');
+            setVideoStage('loop');
+            setCurrentVideo('/PosseLoop1.mp4');
+            setIsTransitioning(false);
+            loopVideo.removeEventListener('canplay', handleCanPlay);
+          }, 200);
+        }
       }
-      
-      // After a brief moment, switch to the loop video
-      setTimeout(() => {
-        setVideoStage('loop');
-        setCurrentVideo('/PosseLoop1.mp4');
-        setIsTransitioning(false);
-      }, 100); // Small delay for smooth transition
     }
   }, [videoStage]);
 
@@ -46,6 +63,8 @@ export function VideoBackground() {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.load();
+      // Start from 8 seconds for testing
+      videoRef.current.currentTime = 8;
       videoRef.current.play().catch((error) => {
         console.error('Video playback failed:', error);
       });
