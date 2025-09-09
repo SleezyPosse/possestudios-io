@@ -63,8 +63,6 @@ export function VideoBackground() {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.load();
-      // Start from 8 seconds for testing
-      videoRef.current.currentTime = 8;
       videoRef.current.play().catch((error) => {
         console.error('Video playback failed:', error);
       });

@@ -5,5 +5,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background-color: #000; /* Prevent white flash */
+  background-image: url('/LastFrame.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
